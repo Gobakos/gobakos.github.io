@@ -1,0 +1,44 @@
+baseURL: "https://gobakos.github.io/"
+languageCode: "en-us"
+title: "gobakos --verbose"
+theme: "PaperMod"
+
+pagination:
+  pagerSize: 10
+
+params:
+  homeInfoParams:
+    Title: "Hi, I'm gobakos"
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
+  TocOpen: false
+  disableThemeToggle: true
+  defaultTheme: "dark"
+  customCSS:
+    - css/custom.css
+
+taxonomies:
+  category: categories
+  tag: tags
+
+menu:
+  main:
+    - name: "Web"
+      url: "/web/"
+      weight: 1
+    - name: "Operating Systems"
+      url: "/os/"
+      weight: 2
+    - name: "Active Directory"
+      url: "/active-directory/"
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

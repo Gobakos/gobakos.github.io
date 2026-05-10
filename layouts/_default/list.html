@@ -1,0 +1,58 @@
+{{- define "main" }}
+<header class="page-header">
+
+{{- $ancestors := slice }}
+{{- $p := . }}
+{{- range seq 5 }}
+  {{- if $p.Parent }}
+    {{- $ancestors = $ancestors | append $p.Parent }}
+    {{- $p = $p.Parent }}
+  {{- end }}
+{{- end }}
+
+{{- if gt (len $ancestors) 0 }}
+<div style="margin-bottom: 1.2rem; font-size: 0.85rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+  {{- $last := len $ancestors }}
+  {{- range $i, $a := $ancestors }}
+    {{- $idx := sub $last $i 1 }}
+    {{- $anc := index $ancestors $idx }}
+    {{- if $anc.IsHome }}
+    <a href="{{ $anc.Permalink }}" style="color:#cc0000; text-decoration:none;"
+       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cc0000'">Home</a>
+    {{- else }}
+    <a href="{{ $anc.Permalink }}" style="color:#cc0000; text-decoration:none;"
+       onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cc0000'">{{ $anc.Title }}</a>
+    {{- end }}
+    <span style="color:#fff; opacity:0.3;">/</span>
+  {{- end }}
+  <span style="color:#fff;">{{ .Title }}</span>
+</div>
+{{- end }}
+
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }}
+</header>
+
+{{- if .Pages }}
+<ul style="list-style:none; padding:0; margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+  {{- range .Pages }}
+  <li>
+    <a href="{{ .Permalink }}" style="text-decoration:none;">
+      <div style="border:1px solid #fff; border-radius:8px; padding:1rem 1.4rem; transition: border-color 0.2s, background 0.2s;"
+           onmouseover="this.style.borderColor='#cc0000'; this.style.background='rgba(255,255,255,0.04)'"
+           onmouseout="this.style.borderColor='#fff'; this.style.background='transparent'">
+        <h2 style="margin:0; font-size:1.1rem; font-weight:500; color:#fff;">{{ .Title }}</h2>
+        {{- if .Summary }}
+        <p style="margin:0.4rem 0 0; font-size:0.875rem; color:#fff; line-height:1.5;">{{ .Summary }}</p>
+        {{- end }}
+      </div>
+    </a>
+  </li>
+  {{- end }}
+</ul>
+{{- else }}
+<p style="margin-top:2rem; color:#fff; font-size:0.95rem;">Nothing here yet.</p>
+{{- end }}
+{{- end }}
