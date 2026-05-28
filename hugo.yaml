@@ -37,6 +37,11 @@ menu:
       url: "/active-directory/"
       weight: 3
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 outputs:
   home:
     - HTML

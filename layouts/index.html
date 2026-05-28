@@ -53,5 +53,23 @@
     </div>
   </div>
 
+  <!-- Recent Posts -->
+  <div style="margin-top: 3rem;">
+    <p style="font-size: 0.7rem; letter-spacing: 0.12em; color: #ff0000; margin-bottom: 1.2rem; text-transform: uppercase;"><b>Recent Posts</b></p>
+    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+      {{- range first 4 (where site.RegularPages "Type" "!=" "page") }}
+      <a href="{{ .Permalink }}" style="display: block; text-decoration: none; border: 1px solid #333; border-radius: 3px; padding: 0.75rem 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 0.9rem; color: #fff; font-weight: 500;">{{ .Title }}</span>
+          <span style="font-size: 0.75rem; color: #666; white-space: nowrap; margin-left: 1rem;">{{ .Date.Format "Jan 02, 2006" }}</span>
+        </div>
+        {{- with .Summary }}
+        <p style="margin: 0.4rem 0 0 0; font-size: 0.8rem; color: #888; line-height: 1.5;">{{ . }}</p>
+        {{- end }}
+      </a>
+      {{- end }}
+    </div>
+  </div>
+
 </div>
 {{- end }}

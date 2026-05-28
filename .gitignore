@@ -1,2 +1,4 @@
 public/
 .hugo_build.lock
+scripts/
+content/web/client-side-security/jwt-attacks.md
