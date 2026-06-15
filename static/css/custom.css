@@ -2,3 +2,27 @@
   max-width: 90% !important;
   padding: 0 2rem;
 }
+
+@media (max-width: 768px) {
+  .main {
+    max-width: 100% !important;
+    padding: 0 1rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  pre, code {
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto;
+  }
+}

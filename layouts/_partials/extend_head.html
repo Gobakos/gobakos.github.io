@@ -1,0 +1,23 @@
+{{- if .Params.mermaid }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme,
+    themeVariables: {
+      fontSize: '20px',
+      fontFamily: 'system-ui, -apple-system, Segoe UI, sans-serif',
+    },
+    flowchart: {
+      nodeSpacing: 50,
+      rankSpacing: 60,
+      padding: 12,
+    },
+  });
+</script>
+<style>
+  .mermaid svg { max-width: 100%; height: auto; font-size: 20px; }
+  .mermaid .nodeLabel, .mermaid .edgeLabel { font-size: 20px !important; }
+</style>
+{{- end }}
