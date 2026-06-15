@@ -22,7 +22,7 @@ The types of SSRF differ by how much of the fetched response actually makes it b
 
 Some common places where attacker-controlled input becomes a server-side request (sinks): URL parameters, document converters, file importers that take a URL, and XML/SVG parsers (XXE to SSRF, since securely configuring an XML parser is not an easy task).
 
-On a recent engagement, I bypassed an SSRF filter by simply changing the request method. This method is called <span style="color:#ff0000">**HTTP Verb Tampering**</span> ([CWE-650](https://cwe.mitre.org/data/definitions/650.html), [Impreva](https://www.imperva.com/learn/application-security/http-verb-tampering/)) and the vulnerability is that the validation logic only runs on one specific HTTP method, but the backend code that performs the actual network request runs regardless of the method that triggered it. For example:
+On a recent engagement, I bypassed an SSRF filter by simply changing the request method. This method is called <span style="color:#ff0000">**HTTP Verb Tampering**</span> ([CWE-650](https://cwe.mitre.org/data/definitions/650.html), [Imperva](https://www.imperva.com/learn/application-security/http-verb-tampering/)) and the vulnerability is that the validation logic only runs on one specific HTTP method, but the backend code that performs the actual network request runs regardless of the method that triggered it. For example:
 
 ```php
 <?php
